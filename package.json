@@ -1,0 +1,21 @@
+{
+  "name": "visual-query-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Shashank",
+  "license": "ISC",
+  "description": "Enhance your visual storytelling in just a few clicks!",
+  "dependencies": {
+    "@google/generative-ai": "^0.17.1",
+    "axios": "^1.7.5",
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "telegraf": "^4.16.3"
+  }
+}
