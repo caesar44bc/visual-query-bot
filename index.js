@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 const bot = new Telegraf(process.env.TELEGRAM_BOT_API);
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
+
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
 const generateDescription = async (imagePath) => {
@@ -26,8 +27,14 @@ const generateDescription = async (imagePath) => {
 
 bot.on("photo", async (ctx) => {
   const chatId = ctx.chat.id;
+  const photo = ctx.message.photo[ctx.message.photo.length - 1];
+  const photoId = photo.file_id;
+  const fileName = photo.file_unique_id;
+  const username = ctx.message.from.username || "No username";
 
-  const photoId = ctx.message.photo[ctx.message.photo.length - 1].file_id;
+  console.log(
+    `Received photo with ID: ${photoId}, file name: ${fileName}, from user: ${username}`
+  );
 
   const file = await ctx.telegram.getFile(photoId);
   const filePath = file.file_path;
