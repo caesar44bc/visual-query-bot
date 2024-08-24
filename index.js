@@ -5,6 +5,7 @@ import axios from "axios";
 import fs from "fs";
 
 config();
+const PORT = process.env.PORT || 3000;
 
 const bot = new Telegraf(process.env.TELEGRAM_BOT_API);
 
@@ -64,4 +65,4 @@ bot.on("photo", async (ctx) => {
 });
 
 bot.launch();
-console.log("Bot is running...");
+console.log(`Bot is running on port ${PORT}`);
